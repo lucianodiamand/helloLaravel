@@ -14,13 +14,13 @@ jobs:
             -   name: Setup Enviroment
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: '7.4'
+                    php-version: '7.3'
             -   name: Speed up the packages installation process
                 run: composer global require hirak/prestissimo
             -   name: Install Packages
                 run: composer install --no-dev
-            -   name: Deploy to Server
-                uses: kosratdev/laravel-deploy-migrate@laravel
+            -   name: Laravel Deploy and Migrate DB
+                uses: kosratdev/larave-deploy-migrate@v2.0.2
                 with:
                     user: user
                     host: host
