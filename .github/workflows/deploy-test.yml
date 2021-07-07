@@ -15,7 +15,7 @@ jobs:
           cp .env.example .env
           php artisan key:generate --ansi
       - name: Directory Permissions
-        run: chown -R www-data:www-data public
+        run: sudo chown -R www-data:www-data public
       - name: Pull Docker image
         run: |
           docker pull "node:lts-slim"
