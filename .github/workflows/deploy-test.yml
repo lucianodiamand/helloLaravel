@@ -16,11 +16,6 @@ jobs:
           php artisan key:generate --ansi
       - name: Directory Permissions
         run: sudo chown -R www-data:www-data public
-#      - name: Pull Docker image
-#        run: |
-#          docker pull "node:lts-slim"
-#          npm install && npm run production
-
       - name: Laravel Rsync Deploy
         uses: SHSharkar/Laravel-Rsync-Deploy@master
         env:
