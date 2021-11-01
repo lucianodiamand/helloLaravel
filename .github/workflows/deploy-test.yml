@@ -16,7 +16,7 @@ jobs:
                 with:
                     php-version: '7.4'
             #-   name: Speed up the packages installation process # test
-            #    run: composer global require hirak/prestissimo
+            #    run: composer global require hirak/prestissimo # test
             -   name: Install Packages
                 run: composer install --no-dev
             -   name: Deploy to Server
