@@ -2,7 +2,7 @@ name: Build and Deploy to prod
 on:
     push:
         branches:
-            -   main
+            -   develop
 
 jobs:
   laravel-rsync-deploy:
