@@ -2,27 +2,30 @@ name: Build and Deploy
 on:
     push:
         branches:
-            -   develop
+            -   master
 
 jobs:
-  laravel-rsync-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: MilesChou/composer-action/7.3/install@master
-      - run: |
-          cp .env.example .env
-          php artisan key:generate --ansi
-      - name: Directory Permissions
-        run: sudo chown -R www-data:www-data public
-      - name: Laravel Rsync Deploy
-        uses: SHSharkar/Laravel-Rsync-Deploy@master
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.TEST_SSH_PRIVATE_KEY }}
-          ARGS: "--ignore-times --compress --verbose --exclude=.git --exclude=.github --exclude=node_modules --no-perms --no-owner --no-group --recursive"
-          REMOTE_HOST: ${{ secrets.TEST_REMOTE_HOST }}
-          REMOTE_HOST_PORT: ${{ secrets.TEST_REMOTE_HOST_PORT }}
-          REMOTE_USER: ${{ secrets.TEST_REMOTE_USER }}
-          TARGET_DIRECTORY: ${{ secrets.TEST_TARGET_DIRECTORY }}
-
+    build:
+        name: Build and Deploy
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout Repository
+                uses: actions/checkout@master
+            -   name: Setup Enviroment
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '7.4'
+            -   name: Speed up the packages installation process
+                run: composer global require hirak/prestissimo
+            -   name: Install Packages
+                run: composer install --no-dev
+            -   name: Deploy to Server
+                uses: kosratdev/laravel-deploy-migrate@laravel
+                with:
+                    user: root
+                    host: 1181.1.65.176
+                    port: 12722
+                    path: /var/www
+                    owner: www-data
+                env:
+                    DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
