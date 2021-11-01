@@ -28,4 +28,4 @@ jobs:
                     path: /var/www
                     owner: www-data
                 env:
-                    DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+                    DEPLOY_KEY: ${{ secrets.TEST_DEPLOY_KEY }}
