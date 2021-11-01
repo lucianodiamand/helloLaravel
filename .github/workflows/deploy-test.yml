@@ -23,7 +23,7 @@ jobs:
                 uses: kosratdev/laravel-deploy-migrate@laravel
                 with:
                     user: root
-                    host: 1181.1.65.176
+                    host: 181.1.65.176
                     port: 12722
                     path: /var/www
                     owner: www-data
