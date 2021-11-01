@@ -20,7 +20,7 @@ jobs:
             -   name: Install Packages
                 run: composer install --no-dev
             -   name: Deploy to Server
-                uses: kosratdev/laravel-deploy-migrate@laravel
+                uses: lucianodiamand/larave-deploy-migrate@master
                 with:
                     user: root
                     host: 181.1.65.176
