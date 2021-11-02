@@ -15,7 +15,7 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: '7.4'
-            #-   name: Speed up the packages installation process # test
+            #-   name: Speed up the packages installation process # test 2
             #    run: composer global require hirak/prestissimo # test 2
             -   name: Install Packages
                 run: composer install --no-dev
