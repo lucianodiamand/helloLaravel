@@ -25,7 +25,7 @@ jobs:
                     user: root
                     host: 181.1.65.176
                     port: 12722
-                    path: /var/www
+                    path: /var/www/html
                     owner: www-data
                 env:
                     DEPLOY_KEY: ${{ secrets.TEST_DEPLOY_KEY }}
